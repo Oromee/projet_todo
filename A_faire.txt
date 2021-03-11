@@ -1,0 +1,10 @@
+Partie 1
+
+- todo list de base : (Données en dur pour le moment)
+	- Affichage **FAIT**
+	- Ajout **En cours**
+	- Suppression **En cours**
+	- Filtre 
+- mise en place (C'est juste un petit coup de HTML/CSS vite fait pour que ça soit joli)
+- store 
+- composants (Techniquement si j'ai bien compris c'est fait)
