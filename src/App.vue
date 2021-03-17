@@ -1,23 +1,32 @@
 <template>
-  <div class="app">
-    <todo></todo>
+  <div id="app">
+    <div class="container">
+      <MenuBar></MenuBar><br>
+      <div class="row">
+        <div class="col-sm-4">
+          <sidebar></sidebar><br>
+        </div>
+        <div class="col-sm-8">
+          <todo></todo>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import todo from './components/todo.vue'
+import Sidebar from './components/sidebar.vue'
+import MenuBar from "./components/MenuBar";
 
 
 export default {
-  data(){
-    return{
-      lol: "exemple"
-    }
-  },
-
   name: 'App',
+
   components: {
-    todo
+    MenuBar,
+    Sidebar,
+    todo,
   },
 
 }
@@ -25,11 +34,7 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    background-color: azure;
+  }
 </style>

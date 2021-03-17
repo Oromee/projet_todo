@@ -4,10 +4,9 @@ Partie 1
 	- Affichage **FAIT**
 	- Ajout **FAIT**
 	- Suppression **FAIT**
-	- composants **FAIT**
-	
-	- Filtre **En cours**
 
+	- Filtre **En cours**
+- store 
 
 - mise en place (C'est juste un petit coup de HTML/CSS vite fait pour que ça soit joli)
-- Store 
+- composants **FAIT**

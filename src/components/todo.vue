@@ -5,67 +5,33 @@
     <button type="button" v-on:click="filterTask('all')">Tous</button>&nbsp;&nbsp;
     <button type="button" v-on:click="filterTask('comp')">Completés</button>&nbsp;&nbsp;
     <button type="button" v-on:click="filterTask('nComp')">Non Complétés</button><br><br>
-    Nombre de tâches restantes : {{ this.restante }}
+    <!--Nombre de tâches restantes : {{ restante }}-->
+
     <ul>
       <li v-for="(todo,index) in todos" :key="todo.id">
-        {{ todo.titre }} --- {{ todo.completed }}
+        {{ todo.titre }} -
         <input type="checkbox" id="fTask" v-on:change="completedTask(index)">
-        <label for="fTask"> -- Fini ?</label>
-        <br>
-        <button type="button" v-on:click="supprimerTask(index)">Supprimer</button>
+        <label for="fTask"> Fini ? </label>
+        <button type="button" class="btn btn-danger" v-on:click="supprimerTask(index)">X</button>
+        <br><br>
       </li>
     </ul>
 
     <div id="nouvelleTask">
       <label for="nTask">Nouvelle tâche : </label>&nbsp;
       <input type="text" id="nTask" v-model="nTask">&nbsp;&nbsp;
-      <button type="button" v-on:click="addTask">Confirmer</button>
+      <button type="button" class="btn btn-success" v-on:click="addTask">+</button>
+      <br> <br>
     </div>
 
   </div>
 </template>
 
-<script>
-export default {
-  data(){
-    return{
-      todos:[
-        {
-          id: 0,
-          titre: 'tache 1',
-          completed: false
-        },
-        {
-          id: 1,
-          titre: 'tache 2',
-          completed: false
-        },
-        {
-          id: 2,
-          titre: 'tache 3',
-          completed: false
-        },
-        {
-          id: 3,
-          titre: 'tache 4',
-          completed: false
-        },
-        {
-          id: 4,
-          titre: 'tache 5',
-          completed: false
-        },
-        {
-          id: 5,
-          titre: 'tache 6',
-          completed: false
-        }
-      ],
-      nTask:'',
-      restante: 0
-    }
-  },
 
+<script>
+import todoStore from "@/Store/todolist/todoStore";
+
+export default {
   methods:{
     completedTask(index){
       if(this.todos[index].completed){
@@ -113,6 +79,11 @@ export default {
       console.log(this.restante)
     }*/
   },
+
+  computed: {
+    todos: todoStore.getters.getAllTodos()
+  },
+
   name:"todo"
 }
 
@@ -124,7 +95,8 @@ export default {
     color:lightgray;
   }
 
-  #nouvelleTask{
-    visibility: visible;
+  #todo{
+    border: black;
+    border-style: solid;
   }
 </style>
