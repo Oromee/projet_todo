@@ -2,26 +2,27 @@
   <div id="todo">
     <h1>TODO LISTE</h1>
     <b>filtre</b> :
-    <button type="button" v-on:click="filterTask('all')">Tous</button>&nbsp;&nbsp;
-    <button type="button" v-on:click="filterTask('comp')">Completés</button>&nbsp;&nbsp;
-    <button type="button" v-on:click="filterTask('nComp')">Non Complétés</button><br><br>
-    <!--Nombre de tâches restantes : {{ restante }}-->
+    <button type="button" v-on:click="$store.commit('filterTask', 'all')">Tous</button>&nbsp;&nbsp;
+    <button type="button" v-on:click="$store.commit('filterTask','comp')">Completés</button>&nbsp;&nbsp;
+    <button type="button" v-on:click="$store.commit('filterTask','nComp')">Non Complétés</button><br><br>
+    Nombre de tâches restantes : {{ rest }}
 
     <ul>
-      <li v-for="(todo,index) in todos" :key="todo.id">
-        {{ todo.titre }} -
-        <input type="checkbox" id="fTask" v-on:change="completedTask(index)">
+      <li v-for="(todo,index) in $store.getters.getAllTodos" :key="index">
+        {{ todo.id }} - {{ todo.titre }} - {{ todo.completed }}
+        <input type="checkbox" id="fTask" v-on:change="$store.commit('completeTask', index)">
         <label for="fTask"> Fini ? </label>
-        <button type="button" class="btn btn-danger" v-on:click="supprimerTask(index)">X</button>
+        <button type="button" class="btn btn-danger" v-on:click="$store.commit('supprimerTask', index)">X</button>
         <br><br>
       </li>
     </ul>
 
     <div id="nouvelleTask">
       <label for="nTask">Nouvelle tâche : </label>&nbsp;
-      <input type="text" id="nTask" v-model="nTask">&nbsp;&nbsp;
-      <button type="button" class="btn btn-success" v-on:click="addTask">+</button>
+      <input type="text" id="nTask" v-model="newT">&nbsp;&nbsp;
+      <button type="button" class="btn btn-success" v-on:click="$store.commit('addTask')">+</button>
       <br> <br>
+      ntask : {{ newT }}
     </div>
 
   </div>
@@ -29,59 +30,15 @@
 
 
 <script>
-import todoStore from "@/Store/todolist/todoStore";
+import { mapState } from 'vuex'
 
 export default {
-  methods:{
-    completedTask(index){
-      if(this.todos[index].completed){
-        this.todos[index].completed=false
-      }
-      else{
-        this.todos[index].completed=true
-      }
-    },
-    supprimerTask(index){
-      this.todos = this.todos.slice(0, index).concat(this.todos.slice(index+1))
-    },
-    addTask(){
-      this.todos.push({id: this.todos.length, titre: this.nTask, completed: false})
-      this.nTask ='';
-    },
 
-    filterTask(filtre){
-      //let tabR = this.todos
-      //console.log(tabR)
-      if(filtre === 'all'){
-        console.log(filtre)
-        return this.todos
-      }
-      if(filtre === 'comp'){
-        console.log(filtre)
-        this.todos = this.todos.filter(function (todo){
-          return todo.completed == true
-        });
-      }
-      if(filtre === 'nComp'){
-        console.log(filtre)
-        this.todos = this.todos.filter(function (todo){
-          return todo.completed == false
-        });
-      }
-    },
-
-    /*setTacheR(){
-      for(let todo in this.todos){
-        if(todo.completed == false){
-          this.restante = this.restante+1
-        }
-      }
-      console.log(this.restante)
-    }*/
-  },
-
-  computed: {
-    todos: todoStore.getters.getAllTodos()
+  computed:{
+    ...mapState({
+      rest: 'restante',
+      newT: 'nTask'
+    }),
   },
 
   name:"todo"
