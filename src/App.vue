@@ -1,22 +1,10 @@
 <template>
-  <div id="app">
-    <div class="container">
-      <MenuBar></MenuBar><br>
-      <div class="row">
-        <div class="col-sm-4">
-          <sidebar></sidebar><br>
-        </div>
-        <div class="col-sm-8">
-          <todo></todo>
-        </div>
-      </div>
-    </div>
+  <div>
+    <menu-bar></menu-bar>
   </div>
 </template>
 
 <script>
-import todo from './components/todo.vue'
-import Sidebar from './components/sidebar.vue'
 import MenuBar from "./components/MenuBar";
 
 
@@ -25,8 +13,6 @@ export default {
 
   components: {
     MenuBar,
-    Sidebar,
-    todo,
   },
 
 }
