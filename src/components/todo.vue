@@ -10,10 +10,10 @@
     <ul>
       <li v-for="(todo,index) in currentT" :key="index">
         {{ todo.titre }} {{ todo.completed }}
-        <input type="checkbox" id="fTask" v-on:change="$store.commit('completeTask', index)">
+        <input type="checkbox" id="fTask" v-on:change="completeTask(index)">
         <label for="fTask">Fini ? </label>&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" class="btn btn-danger"
-                v-on:click="$store.commit('supprimerTask', index, $store.getters.getListID[1])">X
+                v-on:click="supprimerTask(index)">X
         </button>
         <br><br>
       </li>
@@ -22,7 +22,7 @@
     <div id="nouvelleTask">
       <label for="nTask">Nouvelle tâche : </label>&nbsp;
       <input type="text" id="nTask" :value="nTask">&nbsp;&nbsp;
-      <button type="button" class="btn btn-success" v-on:click="$store.commit('addTask')">+</button>
+      <button type="button" class="btn btn-success" v-on:click="addTask">+</button>
       <br><br>
       ntask : {{ nTask }}
     </div>
@@ -35,7 +35,6 @@
 import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
-
   computed:{
     ...mapState('todo', {
       rest: 'restante',
@@ -44,12 +43,9 @@ export default {
     ...mapGetters('todo', {
       currentT: 'getCurrentTodo',
     }),
-    ...mapMutations('todo', {
-      afficheListID: 'afficheListeID'
-    }),
   },
   methods:{
-
+    ...mapMutations('todo', ['completeTask', "addTask", "supprimerTask"]),
   },
 
   name:"todo"

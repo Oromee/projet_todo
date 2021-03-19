@@ -1,12 +1,6 @@
-Partie 1
+A faire : 
 
-- todo list de base : (Données en dur pour le moment)
-	- Affichage **FAIT**
-	- Ajout **FAIT**
-	- Suppression **FAIT**
+- FilterList à mettre en place 
+- addList : finir de lié l'input et le store
+- addTask : finir de lié l'input et le store
 
-	- Filtre **En cours**
-- store 
-
-- mise en place (C'est juste un petit coup de HTML/CSS vite fait pour que ça soit joli)
-- composants **FAIT**

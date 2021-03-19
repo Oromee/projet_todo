@@ -117,8 +117,12 @@ const mutations = {
     },
 
     afficheListeID(state, id) {
-        console.log(state.lists[id].todos)
-        //state.currentTodo = state.lists[id].todos
+        state.currentTodo = state.lists[id].todos
+    },
+
+    updateNList(state, message) {
+        console.log(message)
+        state.nList.message = message
     }
 }
 

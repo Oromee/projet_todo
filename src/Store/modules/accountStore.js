@@ -14,10 +14,16 @@ const state = () => ({
     ],
 })
 
+const getters = {
+    getUsers: (state) => {
+        return state.users
+    }
+}
+
 
 export default {
-    state
-
-
+    namespaced : true,
+    state,
+    getters,
 }
 
