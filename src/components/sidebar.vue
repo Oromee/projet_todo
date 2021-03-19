@@ -2,10 +2,9 @@
   <div id="sidebar">
     <h1>Liste des Todos</h1>
     <ul>
-      <li v-for="(list,index) in $store.state.lists" :key="index">
-        <button type="button" class="btn-dark" v-on:click="$store.commit('afficheListeID', index)">{{ list.id }} - {{ list.titre }}</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" v-on:click="$store.commit('supprimerList', index)">X</button>
-        {{$store.state.lists[index].todos.length}}
+      <li v-for="(list,index) in lists" :key="index">
+        <button type="button" class="btn-dark" v-on:click="this.afficheListID(index)">{{ index }} - {{ list.titre }} - {{ list.id}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button">X</button>
       </li>
     </ul>
 
@@ -21,14 +20,25 @@
 <script>
 
 
-import {mapState} from "vuex";
+import {mapState, mapGetters, mapMutations} from "vuex";
 
 export default {
-  computed:{
-    ...mapState({
-      newL : 'nList'
-    })
+  methods:{
+    ...mapMutations('todo', {
+      afficheListID: 'afficheListeID'
+    }),
   },
+
+  computed:{
+    ...mapState('todo', {
+      newL : 'nList'
+    }),
+    ...mapGetters('todo', {
+      lists : 'getLists'
+    }),
+
+  },
+
 
   name: "sidebar.vue"
 }

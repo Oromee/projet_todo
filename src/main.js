@@ -12,6 +12,9 @@ new Vue({
   el:'#app',
   store,
   router,
+  created() {
+    store.state.todo.currentTodo = store.state.todo.lists[0].todos
+  },
   render: h => h(App)
 
 }).$mount('#app')

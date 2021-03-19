@@ -50,12 +50,15 @@ const state = () => ({
 })
 
 const getters = {
-    getListID: (state) => {
-        return [state.lists[0].todos, state.lists[0].id]
-    }
+    getCurrentTodo: (state) => {
+        return state.currentTodo
+    },
+    getLists: (state) => {
+        return state.lists
+    },
 }
 
-const actions = {
+const mutations = {
     //Pour les todos
     completeTask(state, index) {
         if (state.currentTodo[index].completed) {
@@ -114,7 +117,8 @@ const actions = {
     },
 
     afficheListeID(state, id) {
-        state.currentTodo = state.lists[id].todos
+        console.log(state.lists[id].todos)
+        //state.currentTodo = state.lists[id].todos
     }
 }
 
@@ -122,7 +126,7 @@ export default {
     namespaced: true,
     state,
     getters,
-    actions,
+    mutations,
 }
 
 

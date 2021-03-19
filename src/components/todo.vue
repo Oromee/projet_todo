@@ -1,6 +1,6 @@
 <template>
   <div id="todo">
-    <h1>TODO LISTE</h1>
+    <h1>Tâches à réaliser</h1>
     <b>filtre</b> :
     <button type="button" v-on:click="$store.commit('filterTask', 'all')">Tous</button>&nbsp;&nbsp;
     <button type="button" v-on:click="$store.commit('filterTask','comp')">Completés</button>&nbsp;&nbsp;
@@ -8,7 +8,7 @@
     Nombre de tâches restantes : {{ rest }}
 
     <ul>
-      <li v-for="(todo,index) in this.state.currentT" :key="index">
+      <li v-for="(todo,index) in currentT" :key="index">
         {{ todo.titre }} {{ todo.completed }}
         <input type="checkbox" id="fTask" v-on:change="$store.commit('completeTask', index)">
         <label for="fTask">Fini ? </label>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -21,9 +21,10 @@
 
     <div id="nouvelleTask">
       <label for="nTask">Nouvelle tâche : </label>&nbsp;
-      <input type="text" id="nTask" v-model="$store.state.nTask">&nbsp;&nbsp;
+      <input type="text" id="nTask" :value="nTask">&nbsp;&nbsp;
       <button type="button" class="btn btn-success" v-on:click="$store.commit('addTask')">+</button>
       <br><br>
+      ntask : {{ nTask }}
     </div>
 
   </div>
@@ -31,20 +32,24 @@
 
 
 <script>
-import { mapState } from 'vuex'
-import todoStore from "@/Store/modules/todoStore";
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
 
   computed:{
-    ...mapState({
-      currentT: this.state.currentT
+    ...mapState('todo', {
+      rest: 'restante',
+      nTask: 'nTask'
+    }),
+    ...mapGetters('todo', {
+      currentT: 'getCurrentTodo',
+    }),
+    ...mapMutations('todo', {
+      afficheListID: 'afficheListeID'
     }),
   },
   methods:{
-    afficheListeID(state, id) {
-      this.$store.dispatch(todoStore, id)
-    }
+
   },
 
   name:"todo"
