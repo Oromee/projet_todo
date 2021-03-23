@@ -1,4 +1,5 @@
 <template> <!--Code de la bar de menu trouver sur Bootstrap-->
+  <!--Cette page contient le code du menu Application / Connexion / Inscription -->
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" id="barMenu">
       <router-link to="/Home" class="btn btn-success">Application des Todo-Liste</router-link>&nbsp;
@@ -17,7 +18,18 @@ export default {
 
 <style scoped>
   #barMenu{
-    border: black;
-    border-style: solid;
+  border: black 2px;
+  border-style: solid;
+  margin-bottom: 1%;
+  border-radius: 7px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 1em;
+  }
+
+  #barMenu a {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
   }
 </style>

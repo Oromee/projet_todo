@@ -1,17 +1,20 @@
 <template>
   <div id="todo">
     <h1>Tâches à réaliser</h1>
+    <div id="filtre">
     <b>filtre</b> :
     <button type="button" v-on:click="$store.commit('filterTask', 'all')">Tous</button>&nbsp;&nbsp;
     <button type="button" v-on:click="$store.commit('filterTask','comp')">Completés</button>&nbsp;&nbsp;
     <button type="button" v-on:click="$store.commit('filterTask','nComp')">Non Complétés</button><br><br>
+    </div>
+    <div id="nbtachesrestante">
     Nombre de tâches restantes : {{ rest }}
-
-    <ul>
+    </div>
+    <ul id="listetacheetsupp">
       <li v-for="(todo,index) in currentT" :key="index">
         {{ todo.titre }} {{ todo.completed }}
         <input type="checkbox" id="fTask" v-on:change="completeTask(index)">
-        <label for="fTask">Fini ? </label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="fTask" id="labelforfTask">Fini ? </label>&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" class="btn btn-danger"
                 v-on:click="supprimerTask(index)">X
         </button>
@@ -56,11 +59,51 @@ export default {
 
 <style scoped>
   h1 {
-    color:lightgray;
+    color: teal;
+    width: 41%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #filtre {
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  #nbtachesrestante {
+  width: 31%;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  #listetacheetsupp {
+  width: 33%;
+  margin-left: auto;
+  margin-right: auto;
   }
 
   #todo{
     border: black;
     border-style: solid;
+  }
+
+  #fTask {
+    margin-left:2%;
+    margin-right: 4%;
+  }
+
+  #labelforfTask {
+  margin-right: 2%;
+  }
+
+  #nouvelleTask{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  #nTask {
+  margin-right:2%;
   }
 </style>

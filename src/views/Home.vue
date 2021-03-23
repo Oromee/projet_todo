@@ -30,6 +30,6 @@ components: {
 
 <style scoped>
 #home {
-  background-color: azure;
+ padding-top:1%;
 }
 </style>
