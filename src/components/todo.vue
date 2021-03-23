@@ -1,12 +1,6 @@
 <template>
   <div id="todo">
     <h1>Tâches à réaliser</h1>
-    <div id="filtre">
-    <b>filtre</b> :
-    <button type="button" v-on:click="$store.commit('filterTask', 'all')">Tous</button>&nbsp;&nbsp;
-    <button type="button" v-on:click="$store.commit('filterTask','comp')">Completés</button>&nbsp;&nbsp;
-    <button type="button" v-on:click="$store.commit('filterTask','nComp')">Non Complétés</button><br><br>
-    </div>
     <div id="nbtachesrestante">
     Nombre de tâches restantes : {{ rest }}
     </div>
@@ -69,12 +63,6 @@ export default {
     width: 41%;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  #filtre {
-  width: 45%;
-  margin-left: auto;
-  margin-right: auto;
   }
 
   #nbtachesrestante {

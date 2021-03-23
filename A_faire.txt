@@ -1,6 +1,4 @@
-A faire : 
+Toute la partie connexion à l'api n'est pas implémenter
+L'application fonctionne quand même en local (pas de sauvegarde/persistance des données)
 
-- FilterList à mettre en place 
-- addList : finir de lié l'input et le store
-- addTask : finir de lié l'input et le store
 

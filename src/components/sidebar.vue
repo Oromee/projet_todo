@@ -3,8 +3,7 @@
     <h1 id="titreListeTodo">Liste des Todos</h1>
     <ul id="listeListeTodo">
       <li v-for="(list,index) in lists" :key="index">
-        {{ index }}
-        <button type="button" class="btn-dark" v-on:click="afficheListeID(index)"> - {{ list.titre }} - {{ list.id}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn-dark" v-on:click="afficheListeID(index)">{{ list.titre }}</button>&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" v-on:click="supprimerList(index)">X</button>
       </li>
     </ul>

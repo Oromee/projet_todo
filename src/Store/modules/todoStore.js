@@ -7,8 +7,47 @@ const state = () => ({
         restante: 0,
         nTask: '',
         currentTodo: [],
-        lists: [],
-        nList: 'zefz',
+        nList: '',
+        token: '',
+        lists: [
+            {
+                "id": 0,
+                "titre" : 'list 1',
+                "todos" : [
+                    {
+                        "id": 0,
+                        "titre" : 'tache 1',
+                        "completed": false,
+                    },
+                    {
+                        "id": 1,
+                        "titre" : 'tache 2',
+                        "completed": false,
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "titre": 'list 2',
+                "todos": [
+                    {
+                        "id": 0,
+                        "titre": 'tache 1',
+                        "completed": false,
+                    },
+                    {
+                        "id": 1,
+                        "titre": 'tache 2',
+                        "completed": false,
+                    },
+                    {
+                        "id": 3,
+                        "titre": 'tache 3',
+                        "completed": false,
+                    },
+                ],
+            }
+        ]
 })
 
 const getters = {
@@ -52,26 +91,6 @@ const mutations = {
       state.nTask = nT
     },
 
-    /*filterTask(state, filtre){
-        if(filtre === 'all'){
-            console.log(filtre)
-            return state.todos
-        }
-        if(filtre === 'comp'){
-            console.log(filtre)
-            state.todos = state.todos.filter(function (todo){
-                return todo.completed == true
-            });
-        }
-        if(filtre === 'nComp'){
-            console.log(filtre)
-            state.todos = state.todos.filter(function (todo){
-                return todo.completed == false
-            });
-        }
-    },*/
-
-
     //Pour les listes
     supprimerList(state, index) {
         state.lists = state.lists.slice(0, index).concat(state.lists.slice(index + 1))
@@ -90,7 +109,6 @@ const mutations = {
     },
 
     setNList(state, newL) {
-        console.log(newL)
         state.nList = newL
     }
 }

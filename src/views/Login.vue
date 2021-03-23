@@ -3,33 +3,44 @@
     <h1 id="titreConnexion">Connexion </h1>
     <div id="formulaireConnexion">
     <label for="usrN" class="titreformulaire">Nom d'utilisateur</label>&nbsp;
-    <input type="text" id="usrN" ><br><br>
+    <input type="text" id="usrN" v-model="tUsr" v-on:change="tUsr.set()"><br><br>
     <label for="usrP" class="titreformulaire">Mot de passe</label>&nbsp;
-    <input type="password" id="usrP"><br><br>
-    <button id="buttonValidationConnexion" class="btn btn-success">Connexion</button>
+    <input type="password" id="usrP" v-model="tPsw" v-on:change="tPsw.set()"><br><br>
+    <button id="buttonValidationConnexion" class="btn btn-success" v-on:click="connectUsr">Connexion</button>
     </div>
     <div id="inscrittoi">
     <span id="textinscrittoi"> Pas encore de compte ? </span> <router-link to="/Register" class="btn btn-success">S'inscrire</router-link>
     </div>
-
-<<<<<<< HEAD
-    Pas encore de compte ? <router-link to="/Register" class="btn btn-success">S'inscrire</router-link><br><br><br><br>
-=======
-    <div id="listeadmin">
-    <ul >
-      <li v-for="(usr,index) in usrs" :key="index">
-        {{ usr.id }} {{ usr.username }}
-      </li>
-    </ul>
-    </div>
->>>>>>> 4c80424ffe6692d07becdc01ec8b2d91cbc45bb4
   </div>
 </template>
 
 <script>
 
-export default {
+import {mapMutations} from "vuex";
 
+export default {
+  methods:{
+    ...mapMutations('account', ['connectUsr'])
+  },
+  computed:{
+    tUsr : {
+      get(){
+        return this.$store.state["account/usr"]
+      },
+      set(value){
+        this.$store.commit("account/checkUsr", value)
+      }
+    },
+
+    tPsw : {
+      get(){
+        return this.$store.state["account/psw"]
+      },
+      set(value){
+        this.$store.commit("account/checkPsw", value)
+      }
+    }
+  }
 }
 </script>
 
