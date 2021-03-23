@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar">
-    <h1>Liste des Todos</h1>
-    <ul>
+    <h1 id="titreListeTodo">Liste des Todos</h1>
+    <ul id="listeListeTodo">
       <li v-for="(list,index) in lists" :key="index">
         {{ index }}
         <button type="button" class="btn-dark" v-on:click="afficheListeID(index)"> - {{ list.titre }} - {{ list.id}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -50,6 +50,25 @@ export default {
   #sidebar{
     border: black;
     border-style: solid;
+  }
+
+  #titreListeTodo {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: teal;
+  }
+
+  #listeListeTodo {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  #nouvelleList{
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
   }
 
 </style>
