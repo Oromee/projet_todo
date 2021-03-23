@@ -8,29 +8,13 @@
     <button>Connexion</button><br><br><br><br>
 
     Pas encore de compte ? <router-link to="/Register" class="btn btn-success">S'inscrire</router-link><br><br><br><br>
-
-    <ul>
-      <li v-for="(usr,index) in usrs" :key="index">
-        {{ usr.id }} {{ usr.username }}
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
-import {mapGetters, mapState} from "vuex";
 
 export default {
-  name: "Login",
 
-  computed:{
-    ...mapState('account',{
-
-    }),
-    ...mapGetters('account', {
-      usrs: 'getUsers'
-    }),
-  },
 }
 </script>
 

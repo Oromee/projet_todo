@@ -11,10 +11,8 @@
 
     <div id="nouvelleList">
       <label for="newL">Nouvelle Liste : </label>&nbsp;&nbsp;
-      <input type="text" id="newL" v-model="newL">&nbsp;&nbsp;&nbsp;&nbsp;
-      <button type="button" v-on:click="newL.set(newL)"> + </button> <br> <br>
-      uyyu {{ newL }}
-
+      <input type="text" id="newL" v-model="nL" v-on:change="nL.set()">&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" v-on:click="addList"> + </button> <br> <br>
     </div>
   </div>
 </template>
@@ -22,31 +20,25 @@
 <script>
 
 
-import {mapState, mapGetters, mapMutations} from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   methods:{
     ...mapMutations('todo', ['afficheListeID', 'addList', "supprimerList"]),
-    updateList(e) {
-      this.$store.commit('todo/updateNList', e.target.value)
-    }
   },
 
   computed:{
-    ...mapState('todo', {
-      newL :{
-        get(){
-          return this.$store.state["todo/nList"].message
-        },
-        set(value){
-          this.$store.commit('updateList', value)
-        }
+    nL : {
+      get(){
+        return this.$store.state["todo/nList"]
+      },
+      set(value){
+        this.$store.commit('todo/setNList', value)
       }
-    }),
+    },
     ...mapGetters('todo', {
-      lists : 'getLists'
+      lists : 'getLists',
     }),
-
   },
 
 

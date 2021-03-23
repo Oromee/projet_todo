@@ -21,10 +21,9 @@
 
     <div id="nouvelleTask">
       <label for="nTask">Nouvelle tâche : </label>&nbsp;
-      <input type="text" id="nTask" :value="nTask">&nbsp;&nbsp;
+      <input type="text" id="nTask" v-model="nT" v-on:change="nT.set()">&nbsp;&nbsp;
       <button type="button" class="btn btn-success" v-on:click="addTask">+</button>
       <br><br>
-      ntask : {{ nTask }}
     </div>
 
   </div>
@@ -36,9 +35,16 @@ import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   computed:{
+    nT : {
+      get(){
+        return this.$store.state["todo/nTask"]
+      },
+      set(value){
+        this.$store.commit('todo/setNTask', value)
+      },
+    },
     ...mapState('todo', {
       rest: 'restante',
-      nTask: 'nTask'
     }),
     ...mapGetters('todo', {
       currentT: 'getCurrentTodo',

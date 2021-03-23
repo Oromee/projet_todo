@@ -7,46 +7,8 @@ const state = () => ({
         restante: 0,
         nTask: '',
         currentTodo: [],
-        lists: [
-            {
-                id: 0,
-                titre : 'list 1',
-                todos : [
-                    {
-                        id: 0,
-                        titre : 'tache 1',
-                        completed: false,
-                    },
-                    {
-                        id: 1,
-                        titre : 'tache 2',
-                        completed: false,
-                    }
-                ]
-            },
-            {
-                id: 1,
-                titre : 'list 2',
-                todos : [
-                    {
-                        id: 0,
-                        titre : 'tache 1',
-                        completed: false,
-                    },
-                    {
-                        id: 1,
-                        titre : 'tache 2',
-                        completed: false,
-                    },
-                    {
-                        id: 3,
-                        titre : 'tache 3',
-                        completed: false,
-                    }
-                ]
-            }
-        ],
-        nList: '',
+        lists: [],
+        nList: 'zefz',
 })
 
 const getters = {
@@ -56,6 +18,9 @@ const getters = {
     getLists: (state) => {
         return state.lists
     },
+    nList:(state) => {
+        return state.nList
+    }
 }
 
 const mutations = {
@@ -81,6 +46,10 @@ const mutations = {
         } else {
             console.log('Erreur nom vide');
         }
+    },
+
+    setNTask(state, nT){
+      state.nTask = nT
     },
 
     /*filterTask(state, filtre){
@@ -120,9 +89,9 @@ const mutations = {
         state.currentTodo = state.lists[id].todos
     },
 
-    updateNList(state, message) {
-        console.log(message)
-        state.nList.message = message
+    setNList(state, newL) {
+        console.log(newL)
+        state.nList = newL
     }
 }
 
