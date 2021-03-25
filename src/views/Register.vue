@@ -4,7 +4,7 @@
     <div id="formulaireInscription">
     <label for="usrN" class="titreformulaire">Nom d'utilisateur</label>&nbsp;
     <input type="text" id="usrN" v-model="tUsr" v-on:change="tUsr.set()"><br><br>
-    <label for="usrN" class="titreformulaire">Adresse Mail</label>&nbsp;
+    <label for="usrM" class="titreformulaire">Adresse Mail</label>&nbsp;
     <input type="text" id="usrM" v-model="tMail" v-on:change="tMail.set()"><br><br>
     <label for="usrP" class="titreformulaire">Mot de passe</label>&nbsp;
     <input type="password" id="usrP" v-model="tPsw" v-on:change="tPsw.set()"><br><br>
@@ -90,6 +90,10 @@ name: "Register",
   }
 
   #usrN {
+  width:100%;
+  }
+
+  #usrM {
   width:100%;
   }
 
